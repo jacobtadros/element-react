@@ -35,12 +35,16 @@ module.exports = {
   module: {
     rules: [{
       test: /\.jsx?$/,
+      exclude: /node_modules/,
       loader: 'babel-loader',
       include: [
         path.join(basePath, 'site'),
         path.join(basePath, 'src'),
         path.join(basePath, 'libs')
-      ]
+      ],
+      options: {
+        rootMode: "upward",
+      },
     }, {
       test: /\.css$/,
       use: [MiniCssExtractPlugin.loader, "css-loader"]
